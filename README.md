@@ -41,6 +41,8 @@ Nexys 4 DDR, by Digilent
 
 ## Simulation with DDR Model
 Refer to the [simulation README](src/hdl/tb/README_tb.md)
+We have included the ddr2 model and **sim_tb_top.v/example_top.vhdl** files.
+This files have been altered from the originals ---Xilinx example project for MIG instances.
 
 ## TODO
 * Everything
