@@ -78,6 +78,7 @@ ram_ddr2_3_MIG7_interface...[root]
     * src...................[sources ]
         * constraints.......[fpga constraints]
         * hdl...............[vhdl/verilog sources]
+            * tb............[simulation sources]
         * ip................[ip sources]
         * others............[other]
     * proj..................[vivado project folder]
@@ -97,10 +98,14 @@ memory_top...[top]
 
 Simulation Modules
 ```
-sim_top.v.....[tb top including signal generations, ddr models etc]
-    * example_top...[first instanced module]
-        * memory_top...[main_module for simulation]
-            * inst_ClkGen...................[CLKGEN]
-            * inst_ram_ddr_wrapper..........[ram_ddr_wrapper]
-                * inst_ddr_xadc.............[ddr_xadc]
+sim_top.v...........................................[tb top including signal
+                                                    generations, ddr models etc]
+    * example_top...................................[first instanced module]
+        * memory_top................................[main_module for simulation]
+            * inst_ClkGen...........................[CLKGEN]
+            * inst_ram_ddr_wrapper..................[ram_ddr_wrapper]
+                * inst_ddr_xadc.....................[ddr_xadc]
+    * wiredly.v.....................................[simulation wire module]
+    * ddr2_model....................................[ddr2 model parameters]
+    * ddr2_model_parameters.........................[ddr2 model]
 ```
