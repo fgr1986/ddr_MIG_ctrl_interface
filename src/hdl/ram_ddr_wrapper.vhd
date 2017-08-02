@@ -419,7 +419,7 @@ begin
         elsif st_state = st_SEND_READ then
             mem_ui_cmd <= c_CMD_READ;
         else
-            mem_ui_cmd <= (others => '0');
+            mem_ui_cmd <= c_CMD_READ;
         end if;
     end process p_mem_ctrl_2;
 
