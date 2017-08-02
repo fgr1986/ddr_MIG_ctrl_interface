@@ -77,30 +77,30 @@
 module sim_tb_top;
 
 
-   //***************************************************************************
-   // Traffic Gen related parameters
-   //***************************************************************************
-   parameter SIMULATION            = "TRUE";
-   parameter PORT_MODE             = "BI_MODE";
-   parameter DATA_MODE             = 4'b0010;
-   parameter TST_MEM_INSTR_MODE    = "R_W_INSTR_MODE";
-   parameter EYE_TEST              = "FALSE";
-                                     // set EYE_TEST = "TRUE" to probe memory
-                                     // signals. Traffic Generator will only
-                                     // write to one single location and no
-                                     // read transactions will be generated.
-   parameter DATA_PATTERN          = "DGEN_ALL";
-                                      // For small devices, choose one only.
-                                      // For large device, choose "DGEN_ALL"
-                                      // "DGEN_HAMMER", "DGEN_WALKING1",
-                                      // "DGEN_WALKING0","DGEN_ADDR","
-                                      // "DGEN_NEIGHBOR","DGEN_PRBS","DGEN_ALL"
-   parameter CMD_PATTERN           = "CGEN_ALL";
-                                      // "CGEN_PRBS","CGEN_FIXED","CGEN_BRAM",
-                                      // "CGEN_SEQUENTIAL", "CGEN_ALL"
-   parameter BEGIN_ADDRESS         = 32'h00000000;
-   parameter END_ADDRESS           = 32'h00000fff;
-   parameter PRBS_EADDR_MASK_POS   = 32'hff000000;
+  //  //***************************************************************************
+  //  // Traffic Gen related parameters
+  //  //***************************************************************************
+  //  parameter SIMULATION            = "TRUE";
+  //  parameter PORT_MODE             = "BI_MODE";
+  //  parameter DATA_MODE             = 4'b0010;
+  //  parameter TST_MEM_INSTR_MODE    = "R_W_INSTR_MODE";
+  //  parameter EYE_TEST              = "FALSE";
+  //                                    // set EYE_TEST = "TRUE" to probe memory
+  //                                    // signals. Traffic Generator will only
+  //                                    // write to one single location and no
+  //                                    // read transactions will be generated.
+  //  parameter DATA_PATTERN          = "DGEN_ALL";
+  //                                     // For small devices, choose one only.
+  //                                     // For large device, choose "DGEN_ALL"
+  //                                     // "DGEN_HAMMER", "DGEN_WALKING1",
+  //                                     // "DGEN_WALKING0","DGEN_ADDR","
+  //                                     // "DGEN_NEIGHBOR","DGEN_PRBS","DGEN_ALL"
+  //  parameter CMD_PATTERN           = "CGEN_ALL";
+  //                                     // "CGEN_PRBS","CGEN_FIXED","CGEN_BRAM",
+  //                                     // "CGEN_SEQUENTIAL", "CGEN_ALL"
+  //  parameter BEGIN_ADDRESS         = 32'h00000000;
+  //  parameter END_ADDRESS           = 32'h00000fff;
+  //  parameter PRBS_EADDR_MASK_POS   = 32'hff000000;
 
    //***************************************************************************
    // The following parameters refer to width of various ports
@@ -148,7 +148,7 @@ module sim_tb_top;
                                      // DDR2 SDRAM:
                                      // Burst Length (Mode Register).
                                      // # = "8", "4".
-   
+
    //***************************************************************************
    // The following parameters are multiplier and divisor factors for PLLE2.
    // Based on the selected design frequency these parameters vary.
@@ -190,7 +190,7 @@ module sim_tb_top;
                                      // memory tCK paramter.
                      // # = Clock Period in pS.
 
-   
+
 
    //***************************************************************************
    // Debug and Internal parameters
@@ -203,7 +203,7 @@ module sim_tb_top;
    //***************************************************************************
    parameter DRAM_TYPE             = "DDR2";
 
-    
+
 
   //**************************************************************************//
   // Local parameters Declarations
@@ -226,10 +226,10 @@ module sim_tb_top;
   localparam ERR_INSERT = (ECC_TEST == "ON") ? "OFF" : ECC ;
 
   localparam real REFCLK_PERIOD = (1000000.0/(2*REFCLK_FREQ));
-  localparam RESET_PERIOD = 200000; //in pSec  
+  localparam RESET_PERIOD = 200000; //in pSec
   localparam real SYSCLK_PERIOD = tCK;
-    
-    
+
+
 
   //**************************************************************************//
   // Wire Declarations
@@ -242,7 +242,7 @@ module sim_tb_top;
 
   reg clk_ref_i;
 
-  
+
   wire                               ddr2_reset_n;
   wire [DQ_WIDTH-1:0]                ddr2_dq_fpga;
   wire [DQS_WIDTH-1:0]               ddr2_dqs_p_fpga;
@@ -255,25 +255,25 @@ module sim_tb_top;
   wire [CKE_WIDTH-1:0]               ddr2_cke_fpga;
   wire [CK_WIDTH-1:0]                ddr2_ck_p_fpga;
   wire [CK_WIDTH-1:0]                ddr2_ck_n_fpga;
-    
-  
+
+
   wire                               init_calib_complete;
   wire                               tg_compare_error;
   wire [(CS_WIDTH*nCS_PER_RANK)-1:0] ddr2_cs_n_fpga;
-    
-  wire [DM_WIDTH-1:0]                ddr2_dm_fpga;
-    
-  wire [ODT_WIDTH-1:0]               ddr2_odt_fpga;
-    
-  
-  reg [(CS_WIDTH*nCS_PER_RANK)-1:0] ddr2_cs_n_sdram_tmp;
-    
-  reg [DM_WIDTH-1:0]                 ddr2_dm_sdram_tmp;
-    
-  reg [ODT_WIDTH-1:0]                ddr2_odt_sdram_tmp;
-    
 
-  
+  wire [DM_WIDTH-1:0]                ddr2_dm_fpga;
+
+  wire [ODT_WIDTH-1:0]               ddr2_odt_fpga;
+
+
+  reg [(CS_WIDTH*nCS_PER_RANK)-1:0] ddr2_cs_n_sdram_tmp;
+
+  reg [DM_WIDTH-1:0]                 ddr2_dm_sdram_tmp;
+
+  reg [ODT_WIDTH-1:0]                ddr2_odt_sdram_tmp;
+
+
+
   wire [DQ_WIDTH-1:0]                ddr2_dq_sdram;
   reg [ROW_WIDTH-1:0]                ddr2_addr_sdram;
   reg [BANK_WIDTH-1:0]               ddr2_ba_sdram;
@@ -288,8 +288,8 @@ module sim_tb_top;
   wire [DQS_WIDTH-1:0]               ddr2_dqs_n_sdram;
   reg [CK_WIDTH-1:0]                 ddr2_ck_p_sdram;
   reg [CK_WIDTH-1:0]                 ddr2_ck_n_sdram;
-  
-    
+
+
 
 //**************************************************************************//
 
@@ -332,22 +332,22 @@ module sim_tb_top;
     ddr2_we_n_sdram   <=  #(TPROP_PCB_CTRL) ddr2_we_n_fpga;
     ddr2_cke_sdram    <=  #(TPROP_PCB_CTRL) ddr2_cke_fpga;
   end
-    
+
 
   always @( * )
     ddr2_cs_n_sdram_tmp   <=  #(TPROP_PCB_CTRL) ddr2_cs_n_fpga;
   assign ddr2_cs_n_sdram =  ddr2_cs_n_sdram_tmp;
-    
+
 
   always @( * )
     ddr2_dm_sdram_tmp <=  #(TPROP_PCB_DATA) ddr2_dm_fpga;//DM signal generation
   assign ddr2_dm_sdram = ddr2_dm_sdram_tmp;
-    
+
 
   always @( * )
     ddr2_odt_sdram_tmp  <=  #(TPROP_PCB_CTRL) ddr2_odt_fpga;
   assign ddr2_odt_sdram =  ddr2_odt_sdram_tmp;
-    
+
 
 // Controlling the bi-directional BUS
 
@@ -416,9 +416,9 @@ module sim_tb_top;
        );
     end
   endgenerate
-    
 
-    
+
+
 
   //===========================================================================
   //                         FPGA Memory Controller
@@ -427,16 +427,16 @@ module sim_tb_top;
   example_top #
     (
 
-     .SIMULATION                (SIMULATION),
-     .PORT_MODE                 (PORT_MODE),
-     .DATA_MODE                 (DATA_MODE),
-     .TST_MEM_INSTR_MODE        (TST_MEM_INSTR_MODE),
-     .EYE_TEST                  (EYE_TEST),
-     .DATA_PATTERN              (DATA_PATTERN),
-     .CMD_PATTERN               (CMD_PATTERN),
-     .BEGIN_ADDRESS             (BEGIN_ADDRESS),
-     .END_ADDRESS               (END_ADDRESS),
-     .PRBS_EADDR_MASK_POS       (PRBS_EADDR_MASK_POS),
+//     .SIMULATION                (SIMULATION),
+//     .PORT_MODE                 (PORT_MODE),
+//     .DATA_MODE                 (DATA_MODE),
+//     .TST_MEM_INSTR_MODE        (TST_MEM_INSTR_MODE),
+//     .EYE_TEST                  (EYE_TEST),
+//     .DATA_PATTERN              (DATA_PATTERN),
+//     .CMD_PATTERN               (CMD_PATTERN),
+//     .BEGIN_ADDRESS             (BEGIN_ADDRESS),
+//     .END_ADDRESS               (END_ADDRESS),
+//     .PRBS_EADDR_MASK_POS       (PRBS_EADDR_MASK_POS),
      .BANK_WIDTH                (BANK_WIDTH),
      .COL_WIDTH                 (COL_WIDTH),
      .CS_WIDTH                  (CS_WIDTH),
@@ -452,9 +452,9 @@ module sim_tb_top;
 
      .TCQ                       (TCQ),
 
-     
+
      .DEBUG_PORT                (DEBUG_PORT)
-    
+
 //     .RST_ACT_LOW               (RST_ACT_LOW)
     )
    u_ip_top
@@ -473,14 +473,14 @@ module sim_tb_top;
      .ddr2_ck_n            (ddr2_ck_n_fpga),
      .ddr2_cke             (ddr2_cke_fpga),
      .ddr2_cs_n            (ddr2_cs_n_fpga),
-    
+
      .ddr2_dm              (ddr2_dm_fpga),
-    
+
      .ddr2_odt             (ddr2_odt_fpga),
-    
-     
+
+
      .sys_clk_i            (sys_clk_i),
-    
+
       .init_calib_complete (init_calib_complete),
       .tg_compare_error    (tg_compare_error),
       .sys_rst             (sys_rst)
@@ -540,8 +540,8 @@ module sim_tb_top;
       end
     end
   endgenerate
-    
-    
+
+
 
 
   //***************************************************************************
@@ -580,5 +580,5 @@ module sim_tb_top;
         end
      join
   end
-    
+
 endmodule

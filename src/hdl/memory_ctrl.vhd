@@ -360,10 +360,6 @@ begin
                 s_ram_new_instr   <= '0';
                 s_ram_end_op      <= '0';
                 s_ram_rnw         <= '0';
-            when st_PREP_OP =>
-                s_ram_new_instr   <= '0';
-                s_ram_end_op      <= '0';
-                s_ram_rnw         <= '0';
             when st_SEND_WRITE =>
                 s_ram_new_instr   <= '1';
                 s_ram_end_op      <= '0';
@@ -403,9 +399,6 @@ begin
         s_ram_data_to       <= (others => '0');
         case(st_state) is
             when st_IDLE =>
-                s_ram_addr        <= (others => '0');
-                s_ram_data_to     <= (others => '0');
-            when st_PREP_OP =>
                 s_ram_addr        <= (others => '0');
                 s_ram_data_to     <= (others => '0');
             when st_SEND_WRITE =>
