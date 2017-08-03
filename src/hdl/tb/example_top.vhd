@@ -75,119 +75,119 @@ use ieee.numeric_std.all;
 
 
 entity example_top is
-  generic (
-
-   --***************************************************************************
-   -- Traffic Gen related parameters
-   --***************************************************************************
-   BL_WIDTH              : integer := 10;
-   PORT_MODE             : string  := "BI_MODE";
-   DATA_MODE             : std_logic_vector(3 downto 0) := "0010";
-   ADDR_MODE             : std_logic_vector(3 downto 0) := "0011";
-   TST_MEM_INSTR_MODE    : string  := "R_W_INSTR_MODE";
-   EYE_TEST              : string  := "FALSE";
-                                     -- set EYE_TEST = "TRUE" to probe memory
-                                     -- signals. Traffic Generator will only
-                                     -- write to one single location and no
-                                     -- read transactions will be generated.
-   DATA_PATTERN          : string  := "DGEN_ALL";
-                                      -- For small devices, choose one only.
-                                      -- For large device, choose "DGEN_ALL"
-                                      -- "DGEN_HAMMER", "DGEN_WALKING1",
-                                      -- "DGEN_WALKING0","DGEN_ADDR","
-                                      -- "DGEN_NEIGHBOR","DGEN_PRBS","DGEN_ALL"
-   CMD_PATTERN           : string  := "CGEN_ALL";
-                                      -- "CGEN_PRBS","CGEN_FIXED","CGEN_BRAM",
-                                      -- "CGEN_SEQUENTIAL", "CGEN_ALL"
-   BEGIN_ADDRESS         : std_logic_vector(31 downto 0) := X"00000000";
-   END_ADDRESS           : std_logic_vector(31 downto 0) := X"00ffffff";
-   MEM_ADDR_ORDER        : string  := "BANK_ROW_COLUMN";
-                                      --Possible Parameters
-                                      --1.BANK_ROW_COLUMN : Address mapping is
-                                      --                    in form of Bank Row Column.
-                                      --2.ROW_BANK_COLUMN : Address mapping is
-                                      --                    in the form of Row Bank Column.
-                                      --3.TG_TEST : Scrambles Address bits
-                                      --            for distributed Addressing.
-   PRBS_EADDR_MASK_POS   : std_logic_vector(31 downto 0) := X"ff000000";
-   CMD_WDT               : std_logic_vector(31 downto 0) := X"000003ff";
-   WR_WDT                : std_logic_vector(31 downto 0) := X"00001fff";
-   RD_WDT                : std_logic_vector(31 downto 0) := X"000003ff";
-
-   --***************************************************************************
-   -- The following parameters refer to width of various ports
-   --***************************************************************************
-   BANK_WIDTH            : integer := 3;
-                                     -- # of memory Bank Address bits.
-   COL_WIDTH             : integer := 10;
-                                     -- # of memory Column Address bits.
-   CS_WIDTH              : integer := 1;
-                                     -- # of unique CS outputs to memory.
-   DQ_WIDTH              : integer := 16;
-                                     -- # of DQ (data)
-   DQS_WIDTH             : integer := 2;
-   DQS_CNT_WIDTH         : integer := 1;
-                                     -- = ceil(log2(DQS_WIDTH))
-   DRAM_WIDTH            : integer := 8;
-                                     -- # of DQ per DQS
-   ECC_TEST              : string  := "OFF";
-   RANKS                 : integer := 1;
-                                     -- # of Ranks.
-   ROW_WIDTH             : integer := 13;
-                                     -- # of memory Row Address bits.
-   ADDR_WIDTH            : integer := 27;
-                                     -- # = RANK_WIDTH + BANK_WIDTH
-                                     --     + ROW_WIDTH + COL_WIDTH;
-                                     -- Chip Select is always tied to low for
-                                     -- single rank devices
-   --***************************************************************************
-   -- The following parameters are mode register settings
-   --***************************************************************************
-   BURST_MODE            : string  := "8";
-                                     -- DDR3 SDRAM:
-                                     -- Burst Length (Mode Register 0).
-                                     -- # = "8", "4", "OTF".
-                                     -- DDR2 SDRAM:
-                                     -- Burst Length (Mode Register).
-                                     -- # = "8", "4".
-   --***************************************************************************
-   -- Simulation parameters
-   --***************************************************************************
-   SIMULATION            : string  := "FALSE";
-                                     -- Should be TRUE during design simulations and
-                                     -- FALSE during implementations
-
-   --***************************************************************************
-   -- IODELAY and PHY related parameters
-   --***************************************************************************
-   TCQ                   : integer := 100;
-
-   DRAM_TYPE             : string  := "DDR2";
-
-
-   --***************************************************************************
-   -- System clock frequency parameters
-   --***************************************************************************
-   nCK_PER_CLK           : integer := 4;
-                                     -- # of memory CKs per fabric CLK
-
-   --***************************************************************************
-   -- Debug parameters
-   --***************************************************************************
-   DEBUG_PORT            : string  := "OFF";
-                                     -- # = "ON" Enable debug signals/controls.
-                                     --   = "OFF" Disable debug signals/controls.
-
-   --***************************************************************************
-   -- Temparature monitor parameter
-   --***************************************************************************
-   TEMP_MON_CONTROL         : string  := "INTERNAL"
-                                     -- # = "INTERNAL", "EXTERNAL"
-
---   RST_ACT_LOW           : integer := 1
-                                     -- =1 for active low reset,
-                                     -- =0 for active high.
-   );
+--   generic (
+--
+--    --***************************************************************************
+--    -- Traffic Gen related parameters
+--    --***************************************************************************
+--    BL_WIDTH              : integer := 10;
+--    PORT_MODE             : string  := "BI_MODE";
+--    DATA_MODE             : std_logic_vector(3 downto 0) := "0010";
+--    ADDR_MODE             : std_logic_vector(3 downto 0) := "0011";
+--    TST_MEM_INSTR_MODE    : string  := "R_W_INSTR_MODE";
+--    EYE_TEST              : string  := "FALSE";
+--                                      -- set EYE_TEST = "TRUE" to probe memory
+--                                      -- signals. Traffic Generator will only
+--                                      -- write to one single location and no
+--                                      -- read transactions will be generated.
+--    DATA_PATTERN          : string  := "DGEN_ALL";
+--                                       -- For small devices, choose one only.
+--                                       -- For large device, choose "DGEN_ALL"
+--                                       -- "DGEN_HAMMER", "DGEN_WALKING1",
+--                                       -- "DGEN_WALKING0","DGEN_ADDR","
+--                                       -- "DGEN_NEIGHBOR","DGEN_PRBS","DGEN_ALL"
+--    CMD_PATTERN           : string  := "CGEN_ALL";
+--                                       -- "CGEN_PRBS","CGEN_FIXED","CGEN_BRAM",
+--                                       -- "CGEN_SEQUENTIAL", "CGEN_ALL"
+--    BEGIN_ADDRESS         : std_logic_vector(31 downto 0) := X"00000000";
+--    END_ADDRESS           : std_logic_vector(31 downto 0) := X"00ffffff";
+--    MEM_ADDR_ORDER        : string  := "BANK_ROW_COLUMN";
+--                                       --Possible Parameters
+--                                       --1.BANK_ROW_COLUMN : Address mapping is
+--                                       --                    in form of Bank Row Column.
+--                                       --2.ROW_BANK_COLUMN : Address mapping is
+--                                       --                    in the form of Row Bank Column.
+--                                       --3.TG_TEST : Scrambles Address bits
+--                                       --            for distributed Addressing.
+--    PRBS_EADDR_MASK_POS   : std_logic_vector(31 downto 0) := X"ff000000";
+--    CMD_WDT               : std_logic_vector(31 downto 0) := X"000003ff";
+--    WR_WDT                : std_logic_vector(31 downto 0) := X"00001fff";
+--    RD_WDT                : std_logic_vector(31 downto 0) := X"000003ff";
+--
+--    --***************************************************************************
+--    -- The following parameters refer to width of various ports
+--    --***************************************************************************
+--    BANK_WIDTH            : integer := 3;
+--                                      -- # of memory Bank Address bits.
+--    COL_WIDTH             : integer := 10;
+--                                      -- # of memory Column Address bits.
+--    CS_WIDTH              : integer := 1;
+--                                      -- # of unique CS outputs to memory.
+--    DQ_WIDTH              : integer := 16;
+--                                      -- # of DQ (data)
+--    DQS_WIDTH             : integer := 2;
+--    DQS_CNT_WIDTH         : integer := 1;
+--                                      -- = ceil(log2(DQS_WIDTH))
+--    DRAM_WIDTH            : integer := 8;
+--                                      -- # of DQ per DQS
+--    ECC_TEST              : string  := "OFF";
+--    RANKS                 : integer := 1;
+--                                      -- # of Ranks.
+--    ROW_WIDTH             : integer := 13;
+--                                      -- # of memory Row Address bits.
+--    ADDR_WIDTH            : integer := 27;
+--                                      -- # = RANK_WIDTH + BANK_WIDTH
+--                                      --     + ROW_WIDTH + COL_WIDTH;
+--                                      -- Chip Select is always tied to low for
+--                                      -- single rank devices
+--    --***************************************************************************
+--    -- The following parameters are mode register settings
+--    --***************************************************************************
+--    BURST_MODE            : string  := "8";
+--                                      -- DDR3 SDRAM:
+--                                      -- Burst Length (Mode Register 0).
+--                                      -- # = "8", "4", "OTF".
+--                                      -- DDR2 SDRAM:
+--                                      -- Burst Length (Mode Register).
+--                                      -- # = "8", "4".
+--    --***************************************************************************
+--    -- Simulation parameters
+--    --***************************************************************************
+--    SIMULATION            : string  := "FALSE";
+--                                      -- Should be TRUE during design simulations and
+--                                      -- FALSE during implementations
+--
+--    --***************************************************************************
+--    -- IODELAY and PHY related parameters
+--    --***************************************************************************
+--    TCQ                   : integer := 100;
+--
+--    DRAM_TYPE             : string  := "DDR2";
+--
+--
+--    --***************************************************************************
+--    -- System clock frequency parameters
+--    --***************************************************************************
+--    nCK_PER_CLK           : integer := 4;
+--                                      -- # of memory CKs per fabric CLK
+--
+--    --***************************************************************************
+--    -- Debug parameters
+--    --***************************************************************************
+--    DEBUG_PORT            : string  := "OFF";
+--                                      -- # = "ON" Enable debug signals/controls.
+--                                      --   = "OFF" Disable debug signals/controls.
+--
+--    --***************************************************************************
+--    -- Temparature monitor parameter
+--    --***************************************************************************
+--    TEMP_MON_CONTROL         : string  := "INTERNAL"
+--                                      -- # = "INTERNAL", "EXTERNAL"
+--
+-- --   RST_ACT_LOW           : integer := 1
+--                                      -- =1 for active low reset,
+--                                      -- =0 for active high.
+  --  );
   port (
 
    -- Inouts
@@ -228,56 +228,56 @@ end entity example_top;
 architecture arch_example_top of example_top is
 
 
-  -- clogb2 function - ceiling of log base 2
-  function clogb2 (size : integer) return integer is
-    variable base : integer := 1;
-    variable inp : integer := 0;
-  begin
-    inp := size - 1;
-    while (inp > 1) loop
-      inp := inp/2 ;
-      base := base + 1;
-    end loop;
-    return base;
-  end function;function STR_TO_INT(BM : string) return integer is
-  begin
-   if(BM = "8") then
-     return 8;
-   elsif(BM = "4") then
-     return 4;
-   else
-     return 0;
-   end if;
-  end function;
-
-  constant RANK_WIDTH : integer := clogb2(RANKS);
-
-  function XWIDTH return integer is
-  begin
-    if(CS_WIDTH = 1) then
-      return 0;
-    else
-      return RANK_WIDTH;
-    end if;
-  end function;
-
-
-
-  constant CMD_PIPE_PLUS1        : string  := "ON";
-                                     -- add pipeline stage between MC and PHY
-  constant tPRDI                 : integer := 1000000;
-                                     -- memory tPRDI paramter in pS.
-  constant DATA_WIDTH            : integer := 16;
-  constant PAYLOAD_WIDTH         : integer := DATA_WIDTH;
-  constant BURST_LENGTH          : integer := STR_TO_INT(BURST_MODE);
-  constant APP_DATA_WIDTH        : integer := 2 * nCK_PER_CLK * PAYLOAD_WIDTH;
-  constant APP_MASK_WIDTH        : integer := APP_DATA_WIDTH / 8;
-
-  --***************************************************************************
-  -- Traffic Gen related parameters (derived)
-  --***************************************************************************
-  constant  TG_ADDR_WIDTH        : integer := XWIDTH + BANK_WIDTH + ROW_WIDTH + COL_WIDTH;
-  constant MASK_SIZE             : integer := DATA_WIDTH/8;
+  -- -- clogb2 function - ceiling of log base 2
+  -- function clogb2 (size : integer) return integer is
+  --   variable base : integer := 1;
+  --   variable inp : integer := 0;
+  -- begin
+  --   inp := size - 1;
+  --   while (inp > 1) loop
+  --     inp := inp/2 ;
+  --     base := base + 1;
+  --   end loop;
+  --   return base;
+  -- end function;function STR_TO_INT(BM : string) return integer is
+  -- begin
+  --  if(BM = "8") then
+  --    return 8;
+  --  elsif(BM = "4") then
+  --    return 4;
+  --  else
+  --    return 0;
+  --  end if;
+  -- end function;
+  --
+  -- constant RANK_WIDTH : integer := clogb2(RANKS);
+  --
+  -- function XWIDTH return integer is
+  -- begin
+  --   if(CS_WIDTH = 1) then
+  --     return 0;
+  --   else
+  --     return RANK_WIDTH;
+  --   end if;
+  -- end function;
+  --
+  --
+  --
+  -- constant CMD_PIPE_PLUS1        : string  := "ON";
+  --                                    -- add pipeline stage between MC and PHY
+  -- constant tPRDI                 : integer := 1000000;
+  --                                    -- memory tPRDI paramter in pS.
+  -- constant DATA_WIDTH            : integer := 16;
+  -- constant PAYLOAD_WIDTH         : integer := DATA_WIDTH;
+  -- constant BURST_LENGTH          : integer := STR_TO_INT(BURST_MODE);
+  -- constant APP_DATA_WIDTH        : integer := 2 * nCK_PER_CLK * PAYLOAD_WIDTH;
+  -- constant APP_MASK_WIDTH        : integer := APP_DATA_WIDTH / 8;
+  --
+  -- --***************************************************************************
+  -- -- Traffic Gen related parameters (derived)
+  -- --***************************************************************************
+  -- constant  TG_ADDR_WIDTH        : integer := XWIDTH + BANK_WIDTH + ROW_WIDTH + COL_WIDTH;
+  -- constant MASK_SIZE             : integer := DATA_WIDTH/8;
 
   signal s_init_calibration_complete       : std_logic;
 

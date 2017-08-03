@@ -316,8 +316,10 @@ begin
                 s_ram_addr_pre      <= '0' & ram_addr_i; -- rank in DDR2 MT47H64M16HR-25 is '0'
                 s_ram_data_to_pre   <= ram_data_to_i;
                 -- valid signals (faster domain)
-                mem_ui_addr         <= s_ram_addr_pre;
-                s_ram_data_to       <= s_ram_data_to_pre;
+                if s_ram_new_instr_pre='1' then
+                    mem_ui_addr         <= s_ram_addr_pre;
+                    s_ram_data_to       <= s_ram_data_to_pre;
+                end if;
             end if;
         end if;
     end process p_reg_in_data;

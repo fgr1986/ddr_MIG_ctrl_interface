@@ -133,8 +133,8 @@ type state_type is (st_IDLE, st_SEND_WRITE, st_WAIT_WRITE_ACK,
 --------------------------------------
 -- constants
 --------------------------------------
-constant c_END_WRITE_CLK      : positive  := 2;
-constant c_END_READ_CLK       : positive  := 2;
+constant c_END_WRITE_CLK      : positive  := 4;
+constant c_END_READ_CLK       : positive  := 4;
 constant c_DATA_OFFSET        : integer   := 0;
 --------------------------------------
 -- Signals
@@ -285,13 +285,13 @@ begin
                     st_next_state <= st_SEND_WRITE;
                 end if;
             when st_SEND_WRITE =>
-                if cnt_counter > c_END_WRITE_CLK-1 then
-                    st_next_state <= st_CHANGE;
-                elsif s_ram_new_ack = '1' then
+                if s_ram_new_ack = '1' then
                     st_next_state <= st_WAIT_WRITE_ACK;
                 end if;
             when st_WAIT_WRITE_ACK =>
-                if s_ram_wr_ack = '1' then
+                if s_ram_wr_ack = '1' and cnt_counter >= c_END_WRITE_CLK-1 then
+                    st_next_state <= st_CHANGE;
+                elsif s_ram_wr_ack = '1' then
                     st_next_state <= st_SEND_WRITE;
                 end if;
             when st_CHANGE =>
@@ -300,17 +300,17 @@ begin
                 end if;
              -- We send the command
             when st_SEND_READ =>
-                if cnt_counter > c_END_READ_CLK-1 then
-                    st_next_state <= st_END;
-                elsif s_ram_new_ack = '1' then
+                if s_ram_new_ack = '1' then
                     st_next_state <= st_WAIT_READ_ACK;
                 end if;
             when st_WAIT_READ_ACK =>
-                if s_ram_rd_ack = '1' then
+                if s_ram_rd_ack = '1' and cnt_counter >= c_END_READ_CLK-1 then
+                    st_next_state <= st_END;
+                elsif s_ram_rd_ack = '1' then
                     st_next_state <= st_SEND_READ;
                 end if;
             when st_END => -- nothing
-                -- st_next_state <= st_END;
+                st_next_state <= st_IDLE;
             when others => st_next_state <= st_IDLE;
         end case;
     end process;
@@ -323,7 +323,7 @@ begin
         if (s_reset = '1') then
               cnt_counter <= (others => '0');
         elsif (rising_edge (clk_100MHz_buf)) then
-            if (st_state = st_CHANGE) then
+            if (st_state = st_CHANGE or st_state = st_IDLE) then
                 cnt_counter <= (others => '0');
             elsif cnt_en = '1' then
                 cnt_counter <= cnt_counter + 1;

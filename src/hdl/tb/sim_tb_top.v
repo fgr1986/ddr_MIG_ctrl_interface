@@ -426,36 +426,36 @@ module sim_tb_top;
 
   example_top #
     (
-
-//     .SIMULATION                (SIMULATION),
-//     .PORT_MODE                 (PORT_MODE),
-//     .DATA_MODE                 (DATA_MODE),
-//     .TST_MEM_INSTR_MODE        (TST_MEM_INSTR_MODE),
-//     .EYE_TEST                  (EYE_TEST),
-//     .DATA_PATTERN              (DATA_PATTERN),
-//     .CMD_PATTERN               (CMD_PATTERN),
-//     .BEGIN_ADDRESS             (BEGIN_ADDRESS),
-//     .END_ADDRESS               (END_ADDRESS),
-//     .PRBS_EADDR_MASK_POS       (PRBS_EADDR_MASK_POS),
-     .BANK_WIDTH                (BANK_WIDTH),
-     .COL_WIDTH                 (COL_WIDTH),
-     .CS_WIDTH                  (CS_WIDTH),
-     .DQ_WIDTH                  (DQ_WIDTH),
-     .DQS_WIDTH                 (DQS_WIDTH),
-     .DQS_CNT_WIDTH             (DQS_CNT_WIDTH),
-     .DRAM_WIDTH                (DRAM_WIDTH),
-     .ECC_TEST                  (ECC_TEST),
-     .RANKS                     (RANKS),
-     .ROW_WIDTH                 (ROW_WIDTH),
-     .ADDR_WIDTH                (ADDR_WIDTH),
-     .BURST_MODE                (BURST_MODE),
-
-     .TCQ                       (TCQ),
-
-
-     .DEBUG_PORT                (DEBUG_PORT)
-
-//     .RST_ACT_LOW               (RST_ACT_LOW)
+//
+// //     .SIMULATION                (SIMULATION),
+// //     .PORT_MODE                 (PORT_MODE),
+// //     .DATA_MODE                 (DATA_MODE),
+// //     .TST_MEM_INSTR_MODE        (TST_MEM_INSTR_MODE),
+// //     .EYE_TEST                  (EYE_TEST),
+// //     .DATA_PATTERN              (DATA_PATTERN),
+// //     .CMD_PATTERN               (CMD_PATTERN),
+// //     .BEGIN_ADDRESS             (BEGIN_ADDRESS),
+// //     .END_ADDRESS               (END_ADDRESS),
+// //     .PRBS_EADDR_MASK_POS       (PRBS_EADDR_MASK_POS),
+//      .BANK_WIDTH                (BANK_WIDTH),
+//      .COL_WIDTH                 (COL_WIDTH),
+//      .CS_WIDTH                  (CS_WIDTH),
+//      .DQ_WIDTH                  (DQ_WIDTH),
+//      .DQS_WIDTH                 (DQS_WIDTH),
+//      .DQS_CNT_WIDTH             (DQS_CNT_WIDTH),
+//      .DRAM_WIDTH                (DRAM_WIDTH),
+//      .ECC_TEST                  (ECC_TEST),
+//      .RANKS                     (RANKS),
+//      .ROW_WIDTH                 (ROW_WIDTH),
+//      .ADDR_WIDTH                (ADDR_WIDTH),
+//      .BURST_MODE                (BURST_MODE),
+//
+//      .TCQ                       (TCQ),
+//
+//
+//      .DEBUG_PORT                (DEBUG_PORT)
+//
+// //     .RST_ACT_LOW               (RST_ACT_LOW)
     )
    u_ip_top
      (
