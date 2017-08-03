@@ -292,9 +292,9 @@ begin
                 s_ram_end_op_pre      <= ram_end_op_i;
                 -- valid signals (faster domain)
                 if s_ram_new_instr = '0' then
-                    s_ram_new_instr                <= s_ram_new_instr_pre;
+                    s_ram_new_instr             <= s_ram_new_instr_pre;
                 else
-                    s_ram_new_instr                <= '0';
+                    s_ram_new_instr             <= '0';
                 end if;
                 if s_ram_end_op = '0' then
                     s_ram_end_op                <= s_ram_end_op_pre;
@@ -302,7 +302,7 @@ begin
                     s_ram_end_op                <= '0';
                 end if;
                 -- valid signals with no pulse control
-                s_ram_rnw           <= s_ram_rnw_pre;
+                s_ram_rnw             <= s_ram_rnw_pre;
             end if;
         end if;
     end process p_reg_in_ctrl;
