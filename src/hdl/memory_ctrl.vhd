@@ -134,9 +134,8 @@ type state_type is (st_IDLE, st_SEND_WRITE, st_WAIT_WRITE_ACK,
 --------------------------------------
 -- constants
 --------------------------------------
-constant c_END_WRITE_CLK      : positive  := 4;
-constant c_END_READ_CLK       : positive  := 4;
-constant c_DATA_OFFSET        : integer   := 0;
+constant c_END_WRITE_CLK      : positive  := 16;  -- send total of 16*c_WORDS_2_MEM words
+constant c_END_READ_CLK       : positive  := 16;  -- read total of 16*c_WORDS_2_MEM words
 --------------------------------------
 -- Signals
 --------------------------------------
@@ -487,8 +486,8 @@ begin
             -- restore up to c_WORDS_2_MEM words each time
             data_from: for w in 0 to c_WORDS_2_MEM-1 loop
                 s_ram_data_from_pre2(w)  <= s_ram_data_from_pre((w+1)*c_DATA_WIDTH-1 downto w*c_DATA_WIDTH);
-                -- update when s_ram_rd_valid = '1'
-                if s_ram_rd_valid = '1' then
+                -- update when s_ram_rd_valid_pre2 = '1'
+                if s_ram_rd_valid_pre2 = '1' then
                     s_ram_data_from(w)       <= s_ram_data_from_pre2(w);
                 end if;
             end loop data_from;

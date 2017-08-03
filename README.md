@@ -16,6 +16,12 @@
 
 ## Description
 RAM-like interface between Xilinx MIG 7 generated core for ddr2 and ddr3 memories.
+The control sends consecutive instructions to sequentially store data in the DDR.
+Later, this data is sequentiality read.
+The data is simply generated based on the control iteration, and it is stored
+in groups whose characteristics (length, % of used DDR's word, etc.) depend on
+the parameters specified in **ram_ddr_MIG7_interface_pkg.vhd**.
+
 For simplicity, the DDR memory is working at 300Mhz (using a 200Mhz input clk),
 and a PHY to Controller Clock Ratio of **4:1** with **BL8**.
 **IMPORTANT** By doing so the ddr's **ui_clk** signal needs to be synchronized with the main 100Mhz clk.
@@ -52,6 +58,7 @@ This files have been altered from the originals ---Xilinx example project for MI
 * Create functions for converting lineal addresses to pair of ddr addresses + write/read masks
 
 ## Changelog
+* **v1.0rc** *tag: v1.0rc* Deployment version. To be given to pituero@die.upm.es, Github @ituero
 * **v0.4** Faster (and word-wider) memory interface
 * **v0.3** Will work with a simple control
 * **v0.2** CLKGEN 100Mhz output phase set at 0º (to sync with 200MHz output)
@@ -97,7 +104,7 @@ Synthesis Modules
 memory_top...[top]
     * inst_ClkGen...................[CLKGEN]
     * inst_ram_ddr_wrapper..........[ram_ddr_wrapper]
-        * inst_ddr_xadc.............[ddr_xadc IP]
+        * inst_ddr_xadc.............[IP: ddr_xadc IP]
 ```
 
 Simulation Modules
@@ -108,7 +115,7 @@ sim_top.v...........................................[tb top including signal
         * memory_top................................[main_module for simulation]
             * inst_ClkGen...........................[CLKGEN]
             * inst_ram_ddr_wrapper..................[ram_ddr_wrapper]
-                * inst_ddr_xadc.....................[ddr_xadc IP]
+                * inst_ddr_xadc.....................[IP: ddr_xadc]
     * wiredly.v.....................................[simulation wire module]
     * ddr2_model....................................[ddr2 model parameters]
     * ddr2_model_parameters.........................[ddr2 model]

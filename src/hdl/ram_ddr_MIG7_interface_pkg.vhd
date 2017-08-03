@@ -96,15 +96,6 @@ package ram_ddr_MIG7_interface_pkg is
   constant c_CMD_WRITE              : std_logic_vector(2 downto 0) := "000";
   constant c_CMD_READ               : std_logic_vector(2 downto 0) := "001";
 
---  ---------------------------
---  -- Types    --
---  ---------------------------
---    -- coeff matrix
---    type coeff_vector is array(c_COEFF_NUMBER-1 downto 0)
---        of std_logic_vector( c_COEFF_W-1 downto 0);
---    type coeff_matrix is array(c_ANGLES_NUM-1 downto 0)
---        of coeff_vector;
-
 
 end ram_ddr_MIG7_interface_pkg;
 
