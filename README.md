@@ -139,9 +139,10 @@ If so, remember to accordingly change parameters and constants in both
     * FPGA Family: Artix-7
     * FPGA Part: xc7a100tcsg324
     * Speed Grade: -1
+
 * MIG Options I
     * Create Design
-    * # of controllers: 1
+    * Number of controllers: 1
     * Target FPGA: xc7a100tcsg324 -1
     * Controller Type: DDR2 SDRAM
     * DDR Clk Period: 3333ps (300Mhz)
