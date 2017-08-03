@@ -291,9 +291,18 @@ begin
                 s_ram_new_instr_pre   <= ram_new_instr_i;
                 s_ram_end_op_pre      <= ram_end_op_i;
                 -- valid signals (faster domain)
+                if s_ram_new_instr = '0' then
+                    s_ram_new_instr                <= s_ram_new_instr_pre;
+                else
+                    s_ram_new_instr                <= '0';
+                end if;
+                if s_ram_end_op = '0' then
+                    s_ram_end_op                <= s_ram_end_op_pre;
+                else
+                    s_ram_end_op                <= '0';
+                end if;
+                -- valid signals with no pulse control
                 s_ram_rnw           <= s_ram_rnw_pre;
-                s_ram_new_instr     <= s_ram_new_instr_pre;
-                s_ram_end_op        <= s_ram_end_op_pre;
             end if;
         end if;
     end process p_reg_in_ctrl;
@@ -316,6 +325,7 @@ begin
                 s_ram_addr_pre      <= '0' & ram_addr_i; -- rank in DDR2 MT47H64M16HR-25 is '0'
                 s_ram_data_to_pre   <= ram_data_to_i;
                 -- valid signals (faster domain)
+                -- with control
                 if s_ram_new_instr_pre='1' then
                     mem_ui_addr         <= s_ram_addr_pre;
                     s_ram_data_to       <= s_ram_data_to_pre;

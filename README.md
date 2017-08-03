@@ -1,6 +1,6 @@
 # ddr_MIG7_ctrl_interface: DDR Interface and Control Project for VHDL Laboratory at ETSIT UPM
 
-* **Fernando García-Redondo**, [fgarcia@die.upm.es](mailto:fgarcia@die.upm.es), [fernando.garca@gmail.com](mailto:fernando.garca@gmail.com)
+* [**Fernando García-Redondo**](http://lsi.die.upm.es/People/fernando-garcia/), Mail: [fgarcia@die.upm.es](mailto:fgarcia@die.upm.es), [fernando.garca@gmail.com](mailto:fernando.garca@gmail.com)
 * LSI, Universidad Politécnica de Madrid
 * Created for VHDL Laboratory at ETSIT UPM
 * Created for Vivado 2017.2
@@ -45,12 +45,15 @@ We have included the ddr2 model and **sim_tb_top.v/example_top.vhdl** files.
 This files have been altered from the originals ---Xilinx example project for MIG instances.
 
 ## TODO
-* Everything
+* Better handshake mechanisms for:
+    * Ending process
+    * More complex processes
+*
 
 ## Changelog
 * **v0.4** Faster (and word-wider) memory interface
 * **v0.3** Will work with a simple control
-* **v0.2** CLKGEN 100Mhz output phase set at 180º (to sync with 200MHz output)
+* **v0.2** CLKGEN 100Mhz output phase set at 0º (to sync with 200MHz output)
 * **v0.1** Creation
 
 ## Clone and Project Creation

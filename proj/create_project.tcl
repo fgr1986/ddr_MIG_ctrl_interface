@@ -3,6 +3,7 @@
 
 # Project specific settings. These must be updated for each project.
 set proj_name "ddr_MIG_ctrl_interface"
+set synth_top "memory_ctrl"
 
 if {[info exists ::create_path]} {
 	set dest_dir $::create_path
@@ -45,6 +46,9 @@ set_property "part" $part $obj
 set_property "board_part" $brd_part $obj
 set_property "simulator_language" "Mixed" $obj
 set_property "target_language" "VHDL" $obj
+
+# enable VHDL 2008
+set_param project.enableVHDL2008 1
 
 # Uncomment the following 3 lines to greatly increase build speed while working with IP cores (and/or block diagrams)
 set_property "corecontainer.enable" "1" $obj
@@ -141,7 +145,8 @@ if {[llength $bd_list] != 0} {
   add_files -norecurse [make_wrapper -files [get_files $design_name.bd] -top -force]
 
   set obj [get_filesets sources_1]
-  set_property "top" "${design_name}_wrapper" $obj
+  # set_property "top" "${design_name}_wrapper" $obj
+  set_property "top" "${synth_top}" $obj
 }
 
 set sdk_dir $origin_dir/sdk

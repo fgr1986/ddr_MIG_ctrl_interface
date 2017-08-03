@@ -42,6 +42,7 @@ entity memory_ctrl is
    port(
       clk_100MHz_i          : in  std_logic;
       rstn_i                : in  std_logic;
+      -- this output is required only in simulations
       init_calib_complete_o : out std_logic; -- when calibrated
       -- DDR2 interface signals
       ddr2_addr             : out   std_logic_vector(12 downto 0);
@@ -289,7 +290,7 @@ begin
                     st_next_state <= st_WAIT_WRITE_ACK;
                 end if;
             when st_WAIT_WRITE_ACK =>
-                if s_ram_wr_ack = '1' and cnt_counter >= c_END_WRITE_CLK-1 then
+                if s_ram_wr_ack = '1' and cnt_counter > c_END_WRITE_CLK-1 then
                     st_next_state <= st_CHANGE;
                 elsif s_ram_wr_ack = '1' then
                     st_next_state <= st_SEND_WRITE;
@@ -304,7 +305,7 @@ begin
                     st_next_state <= st_WAIT_READ_ACK;
                 end if;
             when st_WAIT_READ_ACK =>
-                if s_ram_rd_ack = '1' and cnt_counter >= c_END_READ_CLK-1 then
+                if s_ram_rd_ack = '1' and cnt_counter > c_END_READ_CLK-1 then
                     st_next_state <= st_END;
                 elsif s_ram_rd_ack = '1' then
                     st_next_state <= st_SEND_READ;
@@ -358,7 +359,7 @@ begin
         case(st_state) is
             when st_IDLE =>
                 s_ram_new_instr   <= '0';
-                s_ram_end_op      <= '0';
+                s_ram_end_op      <= '1';
                 s_ram_rnw         <= '0';
             when st_SEND_WRITE =>
                 s_ram_new_instr   <= '1';
@@ -452,10 +453,23 @@ begin
             s_ram_wr_ack_pre2           <= s_ram_wr_ack_pre;
             s_ram_available_pre2        <= s_ram_available_pre;
             s_init_calib_complete_pre2  <= s_init_calib_complete_pre;
+            -- second reg stage with pulse control
+            if s_ram_rd_ack = '0' then
+                s_ram_rd_ack                <= s_ram_rd_ack_pre2;
+            else
+                s_ram_rd_ack                <= '0';
+            end if;
+            if s_ram_rd_valid = '0' then
+                s_ram_rd_valid                <= s_ram_rd_valid_pre2;
+            else
+                s_ram_rd_valid                <= '0';
+            end if;
+            if s_ram_wr_ack = '0' then
+                s_ram_wr_ack                <= s_ram_wr_ack_pre2;
+            else
+                s_ram_wr_ack                <= '0';
+            end if;
             -- second reg stage
-            s_ram_rd_ack                <= s_ram_rd_ack_pre2;
-            s_ram_rd_valid              <= s_ram_rd_valid_pre2;
-            s_ram_wr_ack                <= s_ram_wr_ack_pre2;
             s_ram_available             <= s_ram_available_pre2;
             s_init_calib_complete       <= s_init_calib_complete_pre2;
         end if;
@@ -483,7 +497,7 @@ begin
     -----------------------
     -- Outputs connections
     -----------------------
-    -- ram_available_o
+    -- this output is required only in simulations
     init_calib_complete_o <= s_init_calib_complete;
 
 end behavioral;
