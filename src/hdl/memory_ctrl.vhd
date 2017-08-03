@@ -310,8 +310,8 @@ begin
                 elsif s_ram_rd_ack = '1' then
                     st_next_state <= st_SEND_READ;
                 end if;
-            when st_END => -- nothing
-                st_next_state <= st_IDLE;
+            when st_END => -- nothing else in this project
+                -- st_next_state <= st_IDLE;
             when others => st_next_state <= st_IDLE;
         end case;
     end process;
@@ -469,7 +469,7 @@ begin
             else
                 s_ram_wr_ack                <= '0';
             end if;
-            -- second reg stage
+            -- second reg stage with no pulse control
             s_ram_available             <= s_ram_available_pre2;
             s_init_calib_complete       <= s_init_calib_complete_pre2;
         end if;
@@ -484,13 +484,14 @@ begin
                 s_ram_data_from(w)       <= (others => '0');
             end loop data_from_rst;
         elsif (rising_edge (clk_100MHz_buf)) then
-            if s_ram_rd_valid = '1' then
-                -- restore up to c_WORDS_2_MEM words each time
-                data_from: for w in 0 to c_WORDS_2_MEM-1 loop
-                    s_ram_data_from_pre2(w)  <= s_ram_data_from_pre((w+1)*c_DATA_WIDTH-1 downto w*c_DATA_WIDTH);
+            -- restore up to c_WORDS_2_MEM words each time
+            data_from: for w in 0 to c_WORDS_2_MEM-1 loop
+                s_ram_data_from_pre2(w)  <= s_ram_data_from_pre((w+1)*c_DATA_WIDTH-1 downto w*c_DATA_WIDTH);
+                -- update when s_ram_rd_valid = '1'
+                if s_ram_rd_valid = '1' then
                     s_ram_data_from(w)       <= s_ram_data_from_pre2(w);
-                end loop data_from;
-            end if;
+                end if;
+            end loop data_from;
         end if;
     end process p_reg_memory_outs_data;
 

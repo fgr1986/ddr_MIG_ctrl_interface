@@ -12,12 +12,12 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="109016200000fs"></ZoomStartTime>
-      <ZoomEndTime time="109338200001fs"></ZoomEndTime>
-      <Cursor1Time time="109069999000fs"></Cursor1Time>
+      <ZoomStartTime time="109790400000fs"></ZoomStartTime>
+      <ZoomEndTime time="109926600001fs"></ZoomEndTime>
+      <Cursor1Time time="109875000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="200"></NameColumnWidth>
+      <NameColumnWidth column_width="196"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="2" />
@@ -217,9 +217,318 @@
          <obj_property name="ElementShortName">s_ram_data_to[127:0]</obj_property>
          <obj_property name="ObjectShortName">s_ram_data_to[127:0]</obj_property>
       </wvobject>
+      <wvobject type="array" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre">
+         <obj_property name="ElementShortName">s_ram_data_from_pre[127:0]</obj_property>
+         <obj_property name="ObjectShortName">s_ram_data_from_pre[127:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/clk_100MHz_buf">
+         <obj_property name="ElementShortName">clk_100MHz_buf</obj_property>
+         <obj_property name="ObjectShortName">clk_100MHz_buf</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_rd_valid_pre">
+         <obj_property name="ElementShortName">s_ram_rd_valid_pre</obj_property>
+         <obj_property name="ObjectShortName">s_ram_rd_valid_pre</obj_property>
+      </wvobject>
+      <wvobject type="vbus" fp_name="vbus1809">
+         <obj_property name="label">r_pre_2</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[47]">
+            <obj_property name="ElementShortName">[47]</obj_property>
+            <obj_property name="ObjectShortName">[47]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[46]">
+            <obj_property name="ElementShortName">[46]</obj_property>
+            <obj_property name="ObjectShortName">[46]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[45]">
+            <obj_property name="ElementShortName">[45]</obj_property>
+            <obj_property name="ObjectShortName">[45]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[44]">
+            <obj_property name="ElementShortName">[44]</obj_property>
+            <obj_property name="ObjectShortName">[44]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[43]">
+            <obj_property name="ElementShortName">[43]</obj_property>
+            <obj_property name="ObjectShortName">[43]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[42]">
+            <obj_property name="ElementShortName">[42]</obj_property>
+            <obj_property name="ObjectShortName">[42]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[41]">
+            <obj_property name="ElementShortName">[41]</obj_property>
+            <obj_property name="ObjectShortName">[41]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[40]">
+            <obj_property name="ElementShortName">[40]</obj_property>
+            <obj_property name="ObjectShortName">[40]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[39]">
+            <obj_property name="ElementShortName">[39]</obj_property>
+            <obj_property name="ObjectShortName">[39]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[38]">
+            <obj_property name="ElementShortName">[38]</obj_property>
+            <obj_property name="ObjectShortName">[38]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[37]">
+            <obj_property name="ElementShortName">[37]</obj_property>
+            <obj_property name="ObjectShortName">[37]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[36]">
+            <obj_property name="ElementShortName">[36]</obj_property>
+            <obj_property name="ObjectShortName">[36]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[35]">
+            <obj_property name="ElementShortName">[35]</obj_property>
+            <obj_property name="ObjectShortName">[35]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[34]">
+            <obj_property name="ElementShortName">[34]</obj_property>
+            <obj_property name="ObjectShortName">[34]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[33]">
+            <obj_property name="ElementShortName">[33]</obj_property>
+            <obj_property name="ObjectShortName">[33]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[32]">
+            <obj_property name="ElementShortName">[32]</obj_property>
+            <obj_property name="ObjectShortName">[32]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="vbus" fp_name="vbus1792">
+         <obj_property name="label">r_pre_1</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[31]">
+            <obj_property name="ElementShortName">[31]</obj_property>
+            <obj_property name="ObjectShortName">[31]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[30]">
+            <obj_property name="ElementShortName">[30]</obj_property>
+            <obj_property name="ObjectShortName">[30]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[29]">
+            <obj_property name="ElementShortName">[29]</obj_property>
+            <obj_property name="ObjectShortName">[29]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[28]">
+            <obj_property name="ElementShortName">[28]</obj_property>
+            <obj_property name="ObjectShortName">[28]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[27]">
+            <obj_property name="ElementShortName">[27]</obj_property>
+            <obj_property name="ObjectShortName">[27]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[26]">
+            <obj_property name="ElementShortName">[26]</obj_property>
+            <obj_property name="ObjectShortName">[26]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[25]">
+            <obj_property name="ElementShortName">[25]</obj_property>
+            <obj_property name="ObjectShortName">[25]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[24]">
+            <obj_property name="ElementShortName">[24]</obj_property>
+            <obj_property name="ObjectShortName">[24]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[23]">
+            <obj_property name="ElementShortName">[23]</obj_property>
+            <obj_property name="ObjectShortName">[23]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[22]">
+            <obj_property name="ElementShortName">[22]</obj_property>
+            <obj_property name="ObjectShortName">[22]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[21]">
+            <obj_property name="ElementShortName">[21]</obj_property>
+            <obj_property name="ObjectShortName">[21]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[20]">
+            <obj_property name="ElementShortName">[20]</obj_property>
+            <obj_property name="ObjectShortName">[20]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[19]">
+            <obj_property name="ElementShortName">[19]</obj_property>
+            <obj_property name="ObjectShortName">[19]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[18]">
+            <obj_property name="ElementShortName">[18]</obj_property>
+            <obj_property name="ObjectShortName">[18]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[17]">
+            <obj_property name="ElementShortName">[17]</obj_property>
+            <obj_property name="ObjectShortName">[17]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[16]">
+            <obj_property name="ElementShortName">[16]</obj_property>
+            <obj_property name="ObjectShortName">[16]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="vbus" fp_name="vbus1775">
+         <obj_property name="label">r_pre_0</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[15]">
+            <obj_property name="ElementShortName">[15]</obj_property>
+            <obj_property name="ObjectShortName">[15]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[14]">
+            <obj_property name="ElementShortName">[14]</obj_property>
+            <obj_property name="ObjectShortName">[14]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[13]">
+            <obj_property name="ElementShortName">[13]</obj_property>
+            <obj_property name="ObjectShortName">[13]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[12]">
+            <obj_property name="ElementShortName">[12]</obj_property>
+            <obj_property name="ObjectShortName">[12]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[11]">
+            <obj_property name="ElementShortName">[11]</obj_property>
+            <obj_property name="ObjectShortName">[11]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[10]">
+            <obj_property name="ElementShortName">[10]</obj_property>
+            <obj_property name="ObjectShortName">[10]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[9]">
+            <obj_property name="ElementShortName">[9]</obj_property>
+            <obj_property name="ObjectShortName">[9]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[8]">
+            <obj_property name="ElementShortName">[8]</obj_property>
+            <obj_property name="ObjectShortName">[8]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[7]">
+            <obj_property name="ElementShortName">[7]</obj_property>
+            <obj_property name="ObjectShortName">[7]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[6]">
+            <obj_property name="ElementShortName">[6]</obj_property>
+            <obj_property name="ObjectShortName">[6]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[5]">
+            <obj_property name="ElementShortName">[5]</obj_property>
+            <obj_property name="ObjectShortName">[5]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[4]">
+            <obj_property name="ElementShortName">[4]</obj_property>
+            <obj_property name="ObjectShortName">[4]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[3]">
+            <obj_property name="ElementShortName">[3]</obj_property>
+            <obj_property name="ObjectShortName">[3]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[2]">
+            <obj_property name="ElementShortName">[2]</obj_property>
+            <obj_property name="ObjectShortName">[2]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[1]">
+            <obj_property name="ElementShortName">[1]</obj_property>
+            <obj_property name="ObjectShortName">[1]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre[0]">
+            <obj_property name="ElementShortName">[0]</obj_property>
+            <obj_property name="ObjectShortName">[0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_rd_valid_pre2">
+         <obj_property name="ElementShortName">s_ram_rd_valid_pre2</obj_property>
+         <obj_property name="ObjectShortName">s_ram_rd_valid_pre2</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre2">
+         <obj_property name="ElementShortName">s_ram_data_from_pre2[7:0][15:0]</obj_property>
+         <obj_property name="ObjectShortName">s_ram_data_from_pre2[7:0][15:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <wvobject type="array" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre2[7]">
+            <obj_property name="ElementShortName">[7][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[7][15:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre2[6]">
+            <obj_property name="ElementShortName">[6][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[6][15:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre2[5]">
+            <obj_property name="ElementShortName">[5][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[5][15:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre2[4]">
+            <obj_property name="ElementShortName">[4][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[4][15:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre2[3]">
+            <obj_property name="ElementShortName">[3][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[3][15:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre2[2]">
+            <obj_property name="ElementShortName">[2][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[2][15:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre2[1]">
+            <obj_property name="ElementShortName">[1][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[1][15:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from_pre2[0]">
+            <obj_property name="ElementShortName">[0][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[0][15:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+      </wvobject>
       <wvobject type="array" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from">
          <obj_property name="ElementShortName">s_ram_data_from[7:0][15:0]</obj_property>
          <obj_property name="ObjectShortName">s_ram_data_from[7:0][15:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <wvobject type="array" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from[7]">
+            <obj_property name="ElementShortName">[7][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[7][15:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from[6]">
+            <obj_property name="ElementShortName">[6][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[6][15:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from[5]">
+            <obj_property name="ElementShortName">[5][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[5][15:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from[4]">
+            <obj_property name="ElementShortName">[4][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[4][15:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from[3]">
+            <obj_property name="ElementShortName">[3][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[3][15:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from[2]">
+            <obj_property name="ElementShortName">[2][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[2][15:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from[1]">
+            <obj_property name="ElementShortName">[1][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[1][15:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/s_ram_data_from[0]">
+            <obj_property name="ElementShortName">[0][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[0][15:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
       </wvobject>
       <wvobject type="logic" fp_name="/sim_tb_top/u_ip_top/cmp_memory_ctrl/cnt_en">
          <obj_property name="ElementShortName">cnt_en</obj_property>

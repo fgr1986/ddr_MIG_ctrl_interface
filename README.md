@@ -12,6 +12,7 @@
 * Changelog
 * Clone and Project Creation
 * Project Structure
+* MIG Parameters
 
 ## Description
 RAM-like interface between Xilinx MIG 7 generated core for ddr2 and ddr3 memories.
@@ -48,7 +49,7 @@ This files have been altered from the originals ---Xilinx example project for MI
 * Better handshake mechanisms for:
     * Ending process
     * More complex processes
-*
+* Create functions for converting lineal addresses to pair of ddr addresses + write/read masks
 
 ## Changelog
 * **v0.4** Faster (and word-wider) memory interface
@@ -96,7 +97,7 @@ Synthesis Modules
 memory_top...[top]
     * inst_ClkGen...................[CLKGEN]
     * inst_ram_ddr_wrapper..........[ram_ddr_wrapper]
-        * inst_ddr_xadc.............[ddr_xadc]
+        * inst_ddr_xadc.............[ddr_xadc IP]
 ```
 
 Simulation Modules
@@ -107,8 +108,16 @@ sim_top.v...........................................[tb top including signal
         * memory_top................................[main_module for simulation]
             * inst_ClkGen...........................[CLKGEN]
             * inst_ram_ddr_wrapper..................[ram_ddr_wrapper]
-                * inst_ddr_xadc.....................[ddr_xadc]
+                * inst_ddr_xadc.....................[ddr_xadc IP]
     * wiredly.v.....................................[simulation wire module]
     * ddr2_model....................................[ddr2 model parameters]
     * ddr2_model_parameters.........................[ddr2 model]
 ```
+
+## MIG Parameters for embedded DDR2 Memory
+
+The following parameters have been used in the project.
+Most of them (PHY ratio, clks etc.) can be altered.
+If so, remember to accordingly change parameters and constants in both
+**ram_ddr_MIG7_interface_pkg.vhd** and **sim_tb_top.v** files.
+*
