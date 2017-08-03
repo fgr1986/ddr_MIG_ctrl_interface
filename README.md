@@ -68,11 +68,11 @@ This files have been altered from the originals ---Xilinx example project for MI
 
 Clone
 ```
-git clone https://github.com/fgr1986/ram_ddr2_3_MIG7_interface.git
+git clone https://github.com/fgr1986/ddr_MIG_ctrl_interface.git
 ```
 Then open Vivado in project folder
 ```
-cd ram_ddr2_3_MIG7_interface/proj
+cd ddr_MIG_ctrl_interface/proj
 # open vivado
 source create_project.tcl
 ```
@@ -102,9 +102,9 @@ ram_ddr2_3_MIG7_interface...[root]
 Synthesis Modules
 ```
 memory_top...[top]
-    * inst_ClkGen...................[CLKGEN]
-    * inst_ram_ddr_wrapper..........[ram_ddr_wrapper]
-        * inst_ddr_xadc.............[IP: ddr_xadc IP]
+    * ClkGen...................[CLKGEN]
+    * ram_ddr_wrapper..........[ram_ddr_wrapper]
+        * ddr_xadc.............[IP: ddr_xadc IP]
 ```
 
 Simulation Modules
@@ -113,9 +113,9 @@ sim_top.v...........................................[tb top including signal
                                                     generations, ddr models etc]
     * example_top...................................[first instanced module]
         * memory_top................................[main_module for simulation]
-            * inst_ClkGen...........................[CLKGEN]
-            * inst_ram_ddr_wrapper..................[ram_ddr_wrapper]
-                * inst_ddr_xadc.....................[IP: ddr_xadc]
+            * ClkGen................................[CLKGEN]
+            * ram_ddr_wrapper.......................[ram_ddr_wrapper]
+                * ddr_xadc..........................[IP: ddr_xadc]
     * wiredly.v.....................................[simulation wire module]
     * ddr2_model....................................[ddr2 model parameters]
     * ddr2_model_parameters.........................[ddr2 model]
@@ -127,4 +127,3 @@ The following parameters have been used in the project.
 Most of them (PHY ratio, clks etc.) can be altered.
 If so, remember to accordingly change parameters and constants in both
 **ram_ddr_MIG7_interface_pkg.vhd** and **sim_tb_top.v** files.
-*
