@@ -12,7 +12,7 @@
 * Changelog
 * Clone and Project Creation
 * Project Structure
-* MIG Parameters
+* MIG Parameters for embedded m
 
 ## Description
 RAM-like interface between Xilinx MIG 7 generated core for ddr2 and ddr3 memories.
@@ -21,6 +21,10 @@ Later, this data is sequentiality read.
 The data is simply generated based on the control iteration, and it is stored
 in groups whose characteristics (length, % of used DDR's word, etc.) depend on
 the parameters specified in **ram_ddr_MIG7_interface_pkg.vhd**.
+
+**IMPORTANT** The memory has XADC internally instantiated. This is required in order to get
+the ddr internal temperatured. If it is to be removed, regenerate the IP instance
+disabling XADC Instantiation, and drive the temperature signal to the memory.
 
 For simplicity, the DDR memory is working at 300Mhz (using a 200Mhz input clk),
 and a PHY to Controller Clock Ratio of **4:1** with **BL8**.
@@ -68,11 +72,11 @@ This files have been altered from the originals ---Xilinx example project for MI
 
 Clone
 ```
-git clone https://github.com/fgr1986/ram_ddr2_3_MIG7_interface.git
+git clone https://github.com/fgr1986/ddr_MIG_ctrl_interface.git
 ```
 Then open Vivado in project folder
 ```
-cd ram_ddr2_3_MIG7_interface/proj
+cd ddr_MIG_ctrl_interface/proj
 # open vivado
 source create_project.tcl
 ```
@@ -102,9 +106,9 @@ ram_ddr2_3_MIG7_interface...[root]
 Synthesis Modules
 ```
 memory_top...[top]
-    * inst_ClkGen...................[CLKGEN]
-    * inst_ram_ddr_wrapper..........[ram_ddr_wrapper]
-        * inst_ddr_xadc.............[IP: ddr_xadc IP]
+    * ClkGen...................[CLKGEN]
+    * ram_ddr_wrapper..........[ram_ddr_wrapper]
+        * ddr_xadc.............[IP: ddr_xadc IP]
 ```
 
 Simulation Modules
@@ -113,9 +117,9 @@ sim_top.v...........................................[tb top including signal
                                                     generations, ddr models etc]
     * example_top...................................[first instanced module]
         * memory_top................................[main_module for simulation]
-            * inst_ClkGen...........................[CLKGEN]
-            * inst_ram_ddr_wrapper..................[ram_ddr_wrapper]
-                * inst_ddr_xadc.....................[IP: ddr_xadc]
+            * ClkGen................................[CLKGEN]
+            * ram_ddr_wrapper.......................[ram_ddr_wrapper]
+                * ddr_xadc..........................[IP: ddr_xadc]
     * wiredly.v.....................................[simulation wire module]
     * ddr2_model....................................[ddr2 model parameters]
     * ddr2_model_parameters.........................[ddr2 model]
@@ -123,8 +127,57 @@ sim_top.v...........................................[tb top including signal
 
 ## MIG Parameters for embedded DDR2 Memory
 
-The following parameters have been used in the project.
+Refer to the [Generated options](doc/ddr_xadc_options.pdf),
+based on [Xilinx ug586 guide](doc/ug586_7Series_MIS.pdf) and
+[Nexys4DDR's manual](doc/nexys4ddr_rm.pdf).
+
+The parameters described next have been used in the project.
 Most of them (PHY ratio, clks etc.) can be altered.
 If so, remember to accordingly change parameters and constants in both
 **ram_ddr_MIG7_interface_pkg.vhd** and **sim_tb_top.v** files.
-*
+* Vivado Options
+    * FPGA Family: Artix-7
+    * FPGA Part: xc7a100tcsg324
+    * Speed Grade: -1
+* MIG Options I
+    * Create Design
+    * # of controllers: 1
+    * Target FPGA: xc7a100tcsg324 -1
+    * Controller Type: DDR2 SDRAM
+    * DDR Clk Period: 3333ps (300Mhz)
+    * PHY to controller clk ratio: 4:1
+    * Memory Part: MT47H64M16HR-25E
+    * Data Width: 16
+    * ECC (Disabled)
+    * Data Mask: Enabled
+    * Number of Bank Machines: 4
+    * Ordering: Strict
+This gives us: 1Gb, x16, row (bits): 13, col: 10, bank: 3, data bits per strobe: 8, data mask and single rank.
+Therefore, because the rank in DDR2 MT47H64M16HR-25 is one (and consecuentlly its bit will always be '0'),
+we have an effective address (ui_addr) of
+```
+constant c_DATA_ADDRESS_WIDTH     : t_APP_DATA_ADDRESS_WIDTH := c_APP_DATA_ADDRESS_WIDTH-1;
+```
+and the **ui_addr** is handled like
+```
+s_ram_addr_pre      <= '0' & ram_addr_i; -- rank in DDR2 MT47H64M16HR-25 is '0'
+```
+* MIG Options II
+    * Input clk period: 5000ps (200Mhz generated with ClkGen)
+    * Burst Type: sequential
+    * Output Drive Strength: Fullstrength
+    * Controller chip select pin: Enable
+    * RTT(nominal) ODT: 50 ohms
+    * Memory Address Mapping Selection: Bank-Row-Column.
+    * System Clock: No buffer
+    * Reference Clock: Use system Clock
+    * Debug Signals: OFF
+    * Internal Vref: Enabled
+    * IO Power reduction: ON
+    * XADC Instantiation: Enabled!!!
+    * Internal Termination Impedance: 50 ohms
+    * Fixed Pin Out: Pre-existing pin out is known and fixed: either use the provided or the constraints file.
+* Status Signals, leave them with:
+    * sys_rst: select bank, no connect
+    * init_calib_complete: select bank, no connect
+    * tg_compare_error: select bank, no connect
